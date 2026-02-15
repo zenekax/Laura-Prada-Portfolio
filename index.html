@@ -808,12 +808,18 @@
             }
 
             .modal-close {
-                right: 1.5rem;
-                top: 1.5rem;
+                right: 1rem;
+                top: 1rem;
+                width: 44px;
+                height: 44px;
+                font-size: 1.8rem;
+                background: rgba(0, 0, 0, 0.8);
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                z-index: 10010;
             }
 
             .modal-content {
-                padding: 6rem 1.5rem 4rem;
+                padding: 5rem 1.5rem 4rem;
             }
 
             .modal-gallery-grid {
@@ -855,8 +861,10 @@
             width: max-content;
         }
 
-        .brands-marquee:hover .brands-track {
-            animation-play-state: paused;
+        @media (hover: hover) {
+            .brands-marquee:hover .brands-track {
+                animation-play-state: paused;
+            }
         }
 
         @keyframes marquee {
@@ -1235,7 +1243,16 @@
             currentModalFiles = [];
         }
 
-        modalClose.addEventListener('click', closeGallery);
+        modalClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeGallery();
+        });
+        modalClose.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeGallery();
+        });
         galleryModal.addEventListener('click', function(e) {
             if (e.target === galleryModal) closeGallery();
         });
@@ -1308,6 +1325,8 @@
             return 'videos/' + encodeURIComponent(folder) + '/' + encodeURIComponent(file);
         }
 
+        var isMobile = window.matchMedia('(max-width: 968px)').matches || ('ontouchstart' in window && window.innerWidth <= 968);
+
         if (typeof VIDEOS_CONFIG !== 'undefined') {
             VIDEOS_CONFIG.sessions.forEach(function(session, index) {
                 var files = VIDEOS_FILES[session.folder] || [];
@@ -1330,12 +1349,23 @@
                     previewHTML = '<div class="work-preview-grid ' + colsClass + '">';
                     for (var i = 0; i < maxPreviews; i++) {
                         var isLast = (i === maxPreviews - 1 && files.length > maxPreviews);
-                        previewHTML +=
-                            '<div class="work-preview-item">' +
-                                '<video src="' + videoPath(session.folder, files[i]) + '" muted loop playsinline preload="metadata"></video>' +
-                                '<div class="preview-play-icon"><svg width="14" height="14" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21" fill="white"/></svg></div>' +
-                                (isLast ? '<div class="work-preview-overflow">+' + (files.length - maxPreviews) + ' m&aacute;s</div>' : '') +
-                            '</div>';
+                        if (isMobile) {
+                            // Mobile: lightweight poster thumbnail, no video preload
+                            previewHTML +=
+                                '<div class="work-preview-item">' +
+                                    '<video src="' + videoPath(session.folder, files[i]) + '" muted playsinline preload="none" style="pointer-events:none;"></video>' +
+                                    '<div class="preview-play-icon" style="opacity:1;"><svg width="14" height="14" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21" fill="white"/></svg></div>' +
+                                    (isLast ? '<div class="work-preview-overflow">+' + (files.length - maxPreviews) + ' m&aacute;s</div>' : '') +
+                                '</div>';
+                        } else {
+                            // Desktop: full video preview with hover play
+                            previewHTML +=
+                                '<div class="work-preview-item">' +
+                                    '<video src="' + videoPath(session.folder, files[i]) + '" muted loop playsinline preload="metadata"></video>' +
+                                    '<div class="preview-play-icon"><svg width="14" height="14" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21" fill="white"/></svg></div>' +
+                                    (isLast ? '<div class="work-preview-overflow">+' + (files.length - maxPreviews) + ' m&aacute;s</div>' : '') +
+                                '</div>';
+                        }
                     }
                     previewHTML += '</div>';
                 } else {
@@ -1358,17 +1388,19 @@
                     openVideoModal(session.folder);
                 });
 
-                // Hover: play preview videos / Unhover: pause
-                item.addEventListener('mouseenter', function() {
-                    item.querySelectorAll('.work-preview-item video').forEach(function(v) {
-                        v.play().catch(function() {});
+                if (!isMobile) {
+                    // Hover: play preview videos / Unhover: pause (desktop only)
+                    item.addEventListener('mouseenter', function() {
+                        item.querySelectorAll('.work-preview-item video').forEach(function(v) {
+                            v.play().catch(function() {});
+                        });
                     });
-                });
-                item.addEventListener('mouseleave', function() {
-                    item.querySelectorAll('.work-preview-item video').forEach(function(v) {
-                        v.pause();
+                    item.addEventListener('mouseleave', function() {
+                        item.querySelectorAll('.work-preview-item video').forEach(function(v) {
+                            v.pause();
+                        });
                     });
-                });
+                }
 
                 workList.appendChild(item);
 
@@ -1436,7 +1468,16 @@
             document.body.style.overflow = '';
         }
 
-        videoModalClose.addEventListener('click', closeVideoModal);
+        videoModalClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeVideoModal();
+        });
+        videoModalClose.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeVideoModal();
+        });
         videoModal.addEventListener('click', function(e) {
             if (e.target === videoModal) closeVideoModal();
         });
