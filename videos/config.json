@@ -1,0 +1,29 @@
+{
+  "sessions": [
+    {
+      "folder": "01-reels",
+      "title": "Reels",
+      "subtitle": "Produccion de contenido audiovisual para marcas y redes sociales. Desde la conceptualizacion hasta la post-produccion."
+    },
+    {
+      "folder": "02-edicion",
+      "title": "Edicion",
+      "subtitle": "Edicion y post-produccion audiovisual. Color grading, montaje y efectos visuales."
+    },
+    {
+      "folder": "03-cortometrajes",
+      "title": "Cortometrajes",
+      "subtitle": "Direccion y produccion de piezas cinematograficas de ficcion y documental. Narrativa visual con proposito."
+    },
+    {
+      "folder": "04-videoclips",
+      "title": "Videoclips",
+      "subtitle": "Produccion audiovisual para artistas musicales. Concepto creativo, direccion de arte y realizacion."
+    },
+    {
+      "folder": "05-direccion-produccion",
+      "title": "Direccion y Produccion",
+      "subtitle": "Direccion integral de proyectos audiovisuales. Desde la pre-produccion hasta la entrega final."
+    }
+  ]
+}

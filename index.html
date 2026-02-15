@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laura Prada - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.5;
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Crect x='2' y='6' width='20' height='14' rx='2'/%3E%3Ccircle cx='12' cy='13' r='3'/%3E%3Cpath d='M7 6V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2'/%3E%3C/svg%3E") 16 16, auto;
+        }
+
+        a, button, .gallery-item, .work-item {
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='white' stroke='black' stroke-width='1.5'%3E%3Crect x='2' y='6' width='20' height='14' rx='2'/%3E%3Ccircle cx='12' cy='13' r='3'/%3E%3Cpath d='M7 6V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2'/%3E%3C/svg%3E") 16 16, pointer;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        .quick-links {
+            text-align: right;
+        }
+
+        .quick-links-title {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 400;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        .nav-links li:not(:last-child)::after {
+            content: ',';
+            margin-left: 0.25rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 3rem 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Clapperboard Animation */
+        .clapperboard {
+            width: 420px;
+            height: 420px;
+            position: relative;
+        }
+
+        .clapperboard svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .clapper-top {
+            transform-origin: 20px 120px;
+            animation: clapperSlam 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes clapperSlam {
+            0%   { transform: rotate(0deg); }
+            10%  { transform: rotate(-35deg); }
+            45%  { transform: rotate(-35deg); }
+            55%  { transform: rotate(0deg); }
+            58%  { transform: rotate(-3deg); }
+            61%  { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #888;
+            font-weight: 300;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 3/4;
+            background: #111;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .gallery-image-reveal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            clip-path: circle(0% at 50% 50%);
+            transition: clip-path 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .gallery-item:hover .gallery-image-reveal {
+            opacity: 1;
+            clip-path: circle(100% at 50% 50%);
+        }
+
+        .gallery-item.touch-active .gallery-image-reveal {
+            opacity: 1;
+        }
+
+        .gallery-item.touch-active .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item.touch-active .gallery-title {
+            transform: translateY(0);
+        }
+
+        .gallery-item.touch-active .gallery-category {
+            transform: translateY(0);
+        }
+
+        .gallery-item.touch-active .gallery-count {
+            transform: translateY(0);
+        }
+
+        .gallery-item.touch-active .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 10;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-title {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-title {
+            transform: translateY(0);
+        }
+
+        .gallery-category {
+            font-size: 0.875rem;
+            color: #888;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.1s;
+        }
+
+        .gallery-item:hover .gallery-category {
+            transform: translateY(0);
+        }
+
+        .gallery-count {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 0.5rem;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.15s;
+        }
+
+        .gallery-item:hover .gallery-count {
+            transform: translateY(0);
+        }
+
+        /* Work Section */
+        .work-section {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .work-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .work-item {
+            padding: 3rem 0;
+            border-bottom: 1px solid #222;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .work-number {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .work-title {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            transition: transform 0.3s ease;
+        }
+
+        .work-item:hover .work-title {
+            transform: translateX(10px);
+        }
+
+        .work-description {
+            font-size: 1rem;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .work-image-wrapper {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .work-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .work-item:hover .work-image {
+            transform: scale(1.1);
+        }
+
+        /* Video Preview Grid */
+        .work-preview-grid {
+            display: grid;
+            gap: 4px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .work-preview-grid.cols-1 {
+            grid-template-columns: 1fr;
+        }
+
+        .work-preview-grid.cols-2 {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .work-preview-grid.cols-3 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .work-preview-grid.cols-many {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .work-preview-item {
+            position: relative;
+            overflow: hidden;
+            background: #111;
+        }
+
+        .work-preview-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .work-item:hover .work-preview-item video {
+            transform: scale(1.05);
+        }
+
+        .work-preview-item .preview-play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .work-item:hover .work-preview-item .preview-play-icon {
+            opacity: 1;
+        }
+
+        .work-preview-overflow {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 8rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-email {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        .contact-email a {
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px solid #ffffff;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .contact-email a:hover {
+            opacity: 0.6;
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem;
+            text-align: center;
+            border-top: 1px solid #222;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* ===== GALLERY MODAL/LIGHTBOX ===== */
+        .gallery-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.98);
+            z-index: 10000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            background: transparent;
+            color: #ffffff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10002;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 10002;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            font-size: 0.875rem;
+            color: #888;
+        }
+
+        .modal-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 8rem 4rem 4rem;
+            overflow-y: auto;
+        }
+
+        .modal-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            max-width: 1600px;
+            width: 100%;
+            margin: auto 0;
+        }
+
+        .modal-image-item {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .modal-image-item:nth-child(1) { animation-delay: 0.1s; }
+        .modal-image-item:nth-child(2) { animation-delay: 0.2s; }
+        .modal-image-item:nth-child(3) { animation-delay: 0.3s; }
+        .modal-image-item:nth-child(4) { animation-delay: 0.4s; }
+        .modal-image-item:nth-child(5) { animation-delay: 0.5s; }
+        .modal-image-item:nth-child(6) { animation-delay: 0.6s; }
+        .modal-image-item:nth-child(n+7) { animation-delay: 0.7s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .modal-image-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .modal-counter {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.875rem;
+            color: #888;
+            z-index: 10002;
+        }
+
+        /* ===== FULLSCREEN LIGHTBOX ===== */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 20000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            background: transparent;
+            color: #ffffff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 20001;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            background: transparent;
+            color: #ffffff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 20001;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+        }
+
+        .lightbox-nav.prev { left: 2rem; }
+        .lightbox-nav.next { right: 2rem; }
+
+        .lightbox-counter {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.875rem;
+            color: #888;
+            z-index: 20001;
+        }
+
+        /* Video Modal Grid */
+        .video-modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1600px;
+            width: 100%;
+        }
+
+        .video-modal-item {
+            overflow: hidden;
+            position: relative;
+            border-radius: 4px;
+            background: #111;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .video-modal-item:nth-child(1) { animation-delay: 0.1s; }
+        .video-modal-item:nth-child(2) { animation-delay: 0.15s; }
+        .video-modal-item:nth-child(3) { animation-delay: 0.2s; }
+        .video-modal-item:nth-child(4) { animation-delay: 0.25s; }
+        .video-modal-item:nth-child(5) { animation-delay: 0.3s; }
+        .video-modal-item:nth-child(6) { animation-delay: 0.35s; }
+        .video-modal-item:nth-child(n+7) { animation-delay: 0.4s; }
+
+        .video-modal-item video {
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .video-modal-item.vertical {
+            max-width: 280px;
+        }
+
+        /* Work item video count badge */
+        .work-video-count {
+            font-size: 0.875rem;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            header {
+                padding: 1.5rem 2rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .clapperboard {
+                width: 280px;
+                height: 280px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .work-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+                padding: 1rem 1.5rem;
+            }
+
+            .quick-links {
+                text-align: left;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .gallery-section,
+            .work-section,
+            .contact-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .modal-header {
+                left: 1.5rem;
+                top: 1.5rem;
+            }
+
+            .modal-close {
+                right: 1.5rem;
+                top: 1.5rem;
+            }
+
+            .modal-content {
+                padding: 6rem 1.5rem 4rem;
+            }
+
+            .modal-gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-counter {
+                bottom: 1rem;
+            }
+        }
+
+        /* ===== BRANDS / CLIENTS SECTION ===== */
+        .brands-section {
+            padding: 6rem 0;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            overflow: hidden;
+        }
+
+        .brands-section .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 0 3rem;
+        }
+
+        .brands-marquee {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        }
+
+        .brands-track {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            animation: marquee 25s linear infinite;
+            width: max-content;
+        }
+
+        .brands-marquee:hover .brands-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .brand-logo {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.6;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            flex-shrink: 0;
+        }
+
+        .brand-logo.brand-lg {
+            height: 220px;
+        }
+
+        .brand-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Laura Prada&reg;</div>
+        <nav class="quick-links">
+            <div class="quick-links-title">Quick Links</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    Comunicaci&oacute;n Audiovisual<br>
+                    Fotograf&iacute;a &amp; Video<br>
+                    Direcci&oacute;n / Producci&oacute;n / Edici&oacute;n<br>
+                    Storytelling visual<br>
+                    Contenido con intenci&oacute;n, forma y criterio
+                </h1>
+            </div>
+            <div class="hero-visual">
+                <div class="clapperboard">
+                    <svg viewBox="-10 -10 280 280" fill="none" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+                        <!-- Board body -->
+                        <rect x="20" y="120" width="220" height="135" rx="6" stroke="white" stroke-width="2.5" fill="none"/>
+
+                        <!-- Text lines on board -->
+                        <text x="38" y="150" fill="#888" font-family="Inter, sans-serif" font-size="10" font-weight="500">PROD.</text>
+                        <text x="82" y="150" fill="white" font-family="Inter, sans-serif" font-size="10" font-weight="300">My Portfolio</text>
+                        <line x1="82" y1="153" x2="222" y2="153" stroke="#444" stroke-width="1"/>
+                        <text x="38" y="178" fill="#888" font-family="Inter, sans-serif" font-size="10" font-weight="500">DIR.</text>
+                        <text x="70" y="178" fill="white" font-family="Inter, sans-serif" font-size="10" font-weight="300">Laura</text>
+                        <line x1="70" y1="181" x2="222" y2="181" stroke="#444" stroke-width="1"/>
+                        <text x="38" y="206" fill="#888" font-family="Inter, sans-serif" font-size="10" font-weight="500">CAM.</text>
+                        <text x="78" y="206" fill="white" font-family="Inter, sans-serif" font-size="10" font-weight="300">Prada</text>
+                        <line x1="78" y1="209" x2="222" y2="209" stroke="#444" stroke-width="1"/>
+                        <text x="38" y="234" fill="#888" font-family="Inter, sans-serif" font-size="10" font-weight="500">SCENE</text>
+                        <text x="90" y="234" fill="white" font-family="Inter, sans-serif" font-size="10" font-weight="300">01</text>
+                        <line x1="90" y1="237" x2="140" y2="237" stroke="#444" stroke-width="1"/>
+                        <text x="150" y="234" fill="#888" font-family="Inter, sans-serif" font-size="10" font-weight="500">TAKE</text>
+                        <text x="188" y="234" fill="white" font-family="Inter, sans-serif" font-size="10" font-weight="300">01</text>
+                        <line x1="188" y1="237" x2="222" y2="237" stroke="#444" stroke-width="1"/>
+
+                        <!-- Bottom clapper stick (static) -->
+                        <g>
+                            <rect x="20" y="95" width="220" height="28" rx="3" stroke="white" stroke-width="2.5" fill="none"/>
+                            <!-- Diagonal stripes -->
+                            <line x1="45" y1="95" x2="63" y2="123" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="82" y1="95" x2="100" y2="123" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="119" y1="95" x2="137" y2="123" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="156" y1="95" x2="174" y2="123" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="193" y1="95" x2="211" y2="123" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </g>
+
+                        <!-- Top clapper stick (animated) -->
+                        <g class="clapper-top">
+                            <rect x="20" y="95" width="220" height="28" rx="3" stroke="white" stroke-width="2.5" fill="black"/>
+                            <!-- Diagonal stripes (opposite direction) -->
+                            <line x1="63" y1="95" x2="45" y2="123" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="100" y1="95" x2="82" y2="123" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="137" y1="95" x2="119" y2="123" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="174" y1="95" x2="156" y2="123" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="211" y1="95" x2="193" y2="123" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section - Generated dynamically -->
+    <section id="gallery" class="gallery-section">
+        <div class="section-header">
+            <h2 class="section-title">Fotograf&iacute;a</h2>
+            <p class="section-subtitle">Click para ver la sesi&oacute;n completa</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Generated by JS from portfolio-data.js -->
+        </div>
+    </section>
+
+    <!-- Work Section - Generated dynamically -->
+    <section id="work" class="work-section">
+        <div class="section-header">
+            <h2 class="section-title">Proyectos Audiovisuales</h2>
+            <p class="section-subtitle">Direcci&oacute;n, producci&oacute;n y edici&oacute;n</p>
+        </div>
+        <div class="work-list" id="workList">
+            <!-- Generated by JS from portfolio-data.js -->
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="gallery-modal" id="videoModal">
+        <button class="modal-close" id="videoModalClose">&times;</button>
+        <div class="modal-header">
+            <h2 class="modal-title" id="videoModalTitle"></h2>
+            <p class="modal-subtitle" id="videoModalSubtitle"></p>
+        </div>
+        <div class="modal-content">
+            <div class="video-modal-grid" id="videoModalGrid"></div>
+        </div>
+        <div class="modal-counter" id="videoModalCounter"></div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2 class="contact-title">Let's Work Together</h2>
+        <div class="contact-email">
+            <a href="mailto:laucsprada@gmail.com">laucsprada@gmail.com</a>
+        </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/laupradaa/" target="_blank" class="social-link">Instagram</a>
+            <a href="https://www.behance.net/lauraprada12" target="_blank" class="social-link">Behance</a>
+            <a href="https://www.linkedin.com/in/laura-prada-a97673218/" target="_blank" class="social-link">LinkedIn</a>
+        </div>
+    </section>
+
+    <!-- Brands Section - Generated dynamically -->
+    <section class="brands-section">
+        <div class="section-header">
+            <h2 class="section-title">Marcas</h2>
+            <p class="section-subtitle">Clientes con los que he trabajado</p>
+        </div>
+        <div class="brands-marquee">
+            <div class="brands-track" id="brandsTrack">
+                <!-- Generated by JS from portfolio-data.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Laura Prada. All rights reserved.</p>
+    </footer>
+
+    <!-- Gallery Modal -->
+    <div class="gallery-modal" id="galleryModal">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <div class="modal-header">
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <p class="modal-subtitle" id="modalSubtitle"></p>
+        </div>
+        <div class="modal-content">
+            <div class="modal-gallery-grid" id="modalGalleryGrid"></div>
+        </div>
+        <div class="modal-counter" id="modalCounter"></div>
+    </div>
+
+    <!-- Fullscreen Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-nav prev" id="lightboxPrev">&#8249;</button>
+        <button class="lightbox-nav next" id="lightboxNext">&#8250;</button>
+        <img id="lightboxImg" src="" alt="">
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- Portfolio Data (generated by actualizar-portfolio.ps1) -->
+    <script src="portfolio-data.js"></script>
+
+    <script>
+        // ===== PATH HELPER =====
+        // Builds relative path to portfolio images
+        function imgPath(folder, file) {
+            return 'portfolio/' + encodeURIComponent(folder) + '/' + encodeURIComponent(file);
+        }
+
+        // ===== GENERATE GALLERY GRID FROM DATA =====
+        const galleryGrid = document.getElementById('galleryGrid');
+
+        PORTFOLIO_CONFIG.sessions.forEach(function(session) {
+            const files = PORTFOLIO_FILES[session.folder] || [];
+            const photoCount = files.length;
+
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.setAttribute('data-effect', 'reveal');
+            item.setAttribute('data-folder', session.folder);
+            item.style.cursor = 'pointer';
+
+            item.innerHTML =
+                '<div class="gallery-item-inner">' +
+                    '<img class="gallery-image" src="' + imgPath(session.folder, session.cover) + '" alt="' + session.title + '">' +
+                    '<img class="gallery-image-reveal" src="' + imgPath(session.folder, session.reveal) + '" alt="' + session.title + ' Reveal">' +
+                    '<div class="gallery-overlay">' +
+                        '<h3 class="gallery-title">' + session.title + '</h3>' +
+                        '<p class="gallery-category">' + session.category + ' &middot; ' + session.year + '</p>' +
+                        '<p class="gallery-count">' + photoCount + ' fotos</p>' +
+                    '</div>' +
+                '</div>';
+
+            galleryGrid.appendChild(item);
+        });
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ===== REVEAL EFFECT =====
+        function initRevealEffects() {
+            var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+            document.querySelectorAll('[data-effect="reveal"]').forEach(function(item) {
+                var revealImage = item.querySelector('.gallery-image-reveal');
+                if (!revealImage) return;
+
+                // Mouse events (desktop)
+                item.addEventListener('mousemove', function(e) {
+                    var rect = item.getBoundingClientRect();
+                    var x = ((e.clientX - rect.left) / rect.width) * 100;
+                    var y = ((e.clientY - rect.top) / rect.height) * 100;
+                    revealImage.style.clipPath = 'circle(50% at ' + x + '% ' + y + '%)';
+                });
+
+                item.addEventListener('mouseleave', function() {
+                    revealImage.style.clipPath = 'circle(0% at 50% 50%)';
+                });
+
+                // Touch events (mobile)
+                var touchTimeout = null;
+
+                item.addEventListener('touchstart', function(e) {
+                    // Clear any pending navigation
+                    if (touchTimeout) clearTimeout(touchTimeout);
+                    item.classList.add('touch-active');
+                    var touch = e.touches[0];
+                    var rect = item.getBoundingClientRect();
+                    var x = ((touch.clientX - rect.left) / rect.width) * 100;
+                    var y = ((touch.clientY - rect.top) / rect.height) * 100;
+                    revealImage.style.clipPath = 'circle(45% at ' + x + '% ' + y + '%)';
+                }, { passive: true });
+
+                item.addEventListener('touchmove', function(e) {
+                    var touch = e.touches[0];
+                    var rect = item.getBoundingClientRect();
+                    var x = ((touch.clientX - rect.left) / rect.width) * 100;
+                    var y = ((touch.clientY - rect.top) / rect.height) * 100;
+                    revealImage.style.clipPath = 'circle(45% at ' + x + '% ' + y + '%)';
+                }, { passive: true });
+
+                item.addEventListener('touchend', function(e) {
+                    // Delay reset so user sees the reveal before navigating
+                    touchTimeout = setTimeout(function() {
+                        item.classList.remove('touch-active');
+                        revealImage.style.clipPath = 'circle(0% at 50% 50%)';
+                    }, 300);
+                });
+            });
+        }
+        initRevealEffects();
+
+        // ===== INTERSECTION OBSERVER =====
+        var observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.gallery-item, .work-item').forEach(function(item) {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(item);
+        });
+
+        // ===== GALLERY MODAL SYSTEM =====
+        var galleryModal = document.getElementById('galleryModal');
+        var modalClose = document.getElementById('modalClose');
+        var modalTitle = document.getElementById('modalTitle');
+        var modalSubtitle = document.getElementById('modalSubtitle');
+        var modalGalleryGrid = document.getElementById('modalGalleryGrid');
+        var modalCounter = document.getElementById('modalCounter');
+
+        var currentModalFolder = null;
+        var currentModalFiles = [];
+
+        // Click handler for gallery items
+        document.querySelectorAll('.gallery-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+                var folder = this.getAttribute('data-folder');
+                openGallery(folder);
+            });
+        });
+
+        function openGallery(folder) {
+            var session = PORTFOLIO_CONFIG.sessions.find(function(s) { return s.folder === folder; });
+            if (!session) return;
+
+            var files = PORTFOLIO_FILES[folder] || [];
+            currentModalFolder = folder;
+            currentModalFiles = files;
+
+            modalTitle.textContent = session.title;
+            modalSubtitle.textContent = session.category + ' \u00B7 ' + session.year;
+            modalCounter.textContent = files.length + ' fotos';
+
+            modalGalleryGrid.innerHTML = '';
+
+            files.forEach(function(file, index) {
+                var imageItem = document.createElement('div');
+                imageItem.className = 'modal-image-item';
+                imageItem.setAttribute('data-index', index);
+
+                var img = document.createElement('img');
+                img.src = imgPath(folder, file);
+                img.alt = session.title + ' - ' + (index + 1);
+                img.loading = 'lazy';
+
+                imageItem.appendChild(img);
+                modalGalleryGrid.appendChild(imageItem);
+
+                // Click to open lightbox
+                imageItem.addEventListener('click', function() {
+                    openLightbox(index);
+                });
+            });
+
+            galleryModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            scrollModalToTop();
+        }
+
+        function closeGallery() {
+            galleryModal.classList.remove('active');
+            document.body.style.overflow = '';
+            currentModalFolder = null;
+            currentModalFiles = [];
+        }
+
+        modalClose.addEventListener('click', closeGallery);
+        galleryModal.addEventListener('click', function(e) {
+            if (e.target === galleryModal) closeGallery();
+        });
+
+        // ===== FULLSCREEN LIGHTBOX =====
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = document.getElementById('lightboxImg');
+        var lightboxClose = document.getElementById('lightboxClose');
+        var lightboxPrev = document.getElementById('lightboxPrev');
+        var lightboxNext = document.getElementById('lightboxNext');
+        var lightboxCounter = document.getElementById('lightboxCounter');
+        var lightboxIndex = 0;
+
+        function openLightbox(index) {
+            lightboxIndex = index;
+            updateLightbox();
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        function updateLightbox() {
+            var file = currentModalFiles[lightboxIndex];
+            lightboxImg.src = imgPath(currentModalFolder, file);
+            lightboxCounter.textContent = (lightboxIndex + 1) + ' / ' + currentModalFiles.length;
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        lightboxPrev.addEventListener('click', function(e) {
+            e.stopPropagation();
+            lightboxIndex = (lightboxIndex - 1 + currentModalFiles.length) % currentModalFiles.length;
+            updateLightbox();
+        });
+
+        lightboxNext.addEventListener('click', function(e) {
+            e.stopPropagation();
+            lightboxIndex = (lightboxIndex + 1) % currentModalFiles.length;
+            updateLightbox();
+        });
+
+        // ===== KEYBOARD NAVIGATION =====
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') { lightboxIndex = (lightboxIndex - 1 + currentModalFiles.length) % currentModalFiles.length; updateLightbox(); }
+                if (e.key === 'ArrowRight') { lightboxIndex = (lightboxIndex + 1) % currentModalFiles.length; updateLightbox(); }
+            } else if (videoModal.classList.contains('active')) {
+                if (e.key === 'Escape') closeVideoModal();
+            } else if (galleryModal.classList.contains('active')) {
+                if (e.key === 'Escape') closeGallery();
+            }
+        });
+
+        // Scroll modal to top when opened
+        function scrollModalToTop() {
+            var content = document.querySelector('.modal-content');
+            if (content) content.scrollTop = 0;
+        }
+
+        // ===== GENERATE WORK SECTION FROM VIDEOS DATA =====
+        var workList = document.getElementById('workList');
+
+        function videoPath(folder, file) {
+            return 'videos/' + encodeURIComponent(folder) + '/' + encodeURIComponent(file);
+        }
+
+        if (typeof VIDEOS_CONFIG !== 'undefined') {
+            VIDEOS_CONFIG.sessions.forEach(function(session, index) {
+                var files = VIDEOS_FILES[session.folder] || [];
+                var num = String(index + 1).padStart(2, '0');
+
+                var item = document.createElement('div');
+                item.className = 'work-item';
+                item.setAttribute('data-video-folder', session.folder);
+                item.style.cursor = 'pointer';
+
+                // Build preview grid
+                var maxPreviews = Math.min(files.length, 4);
+                var colsClass = 'cols-1';
+                if (maxPreviews === 2) colsClass = 'cols-2';
+                else if (maxPreviews === 3) colsClass = 'cols-3';
+                else if (maxPreviews >= 4) colsClass = 'cols-many';
+
+                var previewHTML = '';
+                if (files.length > 0) {
+                    previewHTML = '<div class="work-preview-grid ' + colsClass + '">';
+                    for (var i = 0; i < maxPreviews; i++) {
+                        var isLast = (i === maxPreviews - 1 && files.length > maxPreviews);
+                        previewHTML +=
+                            '<div class="work-preview-item">' +
+                                '<video src="' + videoPath(session.folder, files[i]) + '" muted loop playsinline preload="metadata"></video>' +
+                                '<div class="preview-play-icon"><svg width="14" height="14" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21" fill="white"/></svg></div>' +
+                                (isLast ? '<div class="work-preview-overflow">+' + (files.length - maxPreviews) + ' m&aacute;s</div>' : '') +
+                            '</div>';
+                    }
+                    previewHTML += '</div>';
+                } else {
+                    previewHTML =
+                        '<div style="width:100%;height:100%;background:#111;display:flex;align-items:center;justify-content:center;">' +
+                            '<svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3" fill="#333" stroke="none"/></svg>' +
+                        '</div>';
+                }
+
+                item.innerHTML =
+                    '<div class="work-info">' +
+                        '<div class="work-number">' + num + '</div>' +
+                        '<h3 class="work-title">' + session.title + '</h3>' +
+                        '<p class="work-description">' + session.subtitle + '</p>' +
+                        '<p class="work-video-count">' + files.length + ' videos</p>' +
+                    '</div>' +
+                    '<div class="work-image-wrapper">' + previewHTML + '</div>';
+
+                item.addEventListener('click', function() {
+                    openVideoModal(session.folder);
+                });
+
+                // Hover: play preview videos / Unhover: pause
+                item.addEventListener('mouseenter', function() {
+                    item.querySelectorAll('.work-preview-item video').forEach(function(v) {
+                        v.play().catch(function() {});
+                    });
+                });
+                item.addEventListener('mouseleave', function() {
+                    item.querySelectorAll('.work-preview-item video').forEach(function(v) {
+                        v.pause();
+                    });
+                });
+
+                workList.appendChild(item);
+
+                // Animate with intersection observer
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(item);
+            });
+        }
+
+        // ===== VIDEO MODAL SYSTEM =====
+        var videoModal = document.getElementById('videoModal');
+        var videoModalClose = document.getElementById('videoModalClose');
+        var videoModalTitle = document.getElementById('videoModalTitle');
+        var videoModalSubtitle = document.getElementById('videoModalSubtitle');
+        var videoModalGrid = document.getElementById('videoModalGrid');
+        var videoModalCounter = document.getElementById('videoModalCounter');
+
+        function openVideoModal(folder) {
+            var session = VIDEOS_CONFIG.sessions.find(function(s) { return s.folder === folder; });
+            if (!session) return;
+
+            var files = VIDEOS_FILES[folder] || [];
+            if (files.length === 0) return;
+
+            videoModalTitle.textContent = session.title;
+            videoModalSubtitle.textContent = session.subtitle;
+            videoModalCounter.textContent = files.length + ' videos';
+
+            videoModalGrid.innerHTML = '';
+
+            files.forEach(function(file) {
+                var videoItem = document.createElement('div');
+                videoItem.className = 'video-modal-item';
+
+                var video = document.createElement('video');
+                video.src = videoPath(folder, file);
+                video.controls = true;
+                video.preload = 'metadata';
+                video.playsInline = true;
+
+                // Detect vertical videos and add class
+                video.addEventListener('loadedmetadata', function() {
+                    if (video.videoHeight > video.videoWidth) {
+                        videoItem.classList.add('vertical');
+                    }
+                });
+
+                videoItem.appendChild(video);
+                videoModalGrid.appendChild(videoItem);
+            });
+
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Scroll to top
+            var content = videoModal.querySelector('.modal-content');
+            if (content) content.scrollTop = 0;
+        }
+
+        function closeVideoModal() {
+            // Pause all videos
+            videoModalGrid.querySelectorAll('video').forEach(function(v) { v.pause(); });
+            videoModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        videoModalClose.addEventListener('click', closeVideoModal);
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) closeVideoModal();
+        });
+
+        // ===== BRANDS MARQUEE (dynamic from BRAND_LOGOS) =====
+        // Logos with lots of whitespace that need to be rendered larger
+        var largeLogos = ['IMG_3204.PNG', 'IMG_3205.PNG', 'IMG_3206.PNG', 'logo since blanco-04.png'];
+
+        if (typeof BRAND_LOGOS !== 'undefined' && BRAND_LOGOS.length > 0) {
+            var brandsTrack = document.getElementById('brandsTrack');
+            // Add logos twice for seamless infinite loop
+            for (var r = 0; r < 2; r++) {
+                BRAND_LOGOS.forEach(function(file) {
+                    var img = document.createElement('img');
+                    img.className = 'brand-logo';
+                    if (largeLogos.indexOf(file) !== -1) {
+                        img.classList.add('brand-lg');
+                    }
+                    img.src = 'Logos/' + encodeURIComponent(file);
+                    var name = file.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+                    img.alt = name;
+                    img.loading = 'lazy';
+                    brandsTrack.appendChild(img);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

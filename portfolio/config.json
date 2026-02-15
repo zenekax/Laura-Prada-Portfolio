@@ -1,0 +1,76 @@
+{
+  "sessions": [
+    {
+      "folder": "01-retrato-editorial",
+      "title": "Fashion Editorial",
+      "category": "Editorial",
+      "year": "2024",
+      "cover": "1-Laura Prada_2025_07_01 CURSO ILUMINACION2168.jpg",
+      "reveal": "9-Laura Prada_2025_07_01 CURSO ILUMINACION1155.jpg"
+    },
+    {
+      "folder": "02-cobertura-eventos",
+      "title": "Brands",
+      "category": "Comercial",
+      "year": "2024",
+      "cover": "7-DSC00981.jpg",
+      "reveal": "11-DSC01275.jpg"
+    },
+    {
+      "folder": "03-fotografia-producto",
+      "title": "Food",
+      "category": "Comercial",
+      "year": "2024",
+      "cover": "1-DSC04088.jpg",
+      "reveal": "11-DSC04476.jpg"
+    },
+    {
+      "folder": "04-fashion-editorial",
+      "title": "LUZUTV",
+      "category": "Contenido",
+      "year": "2024",
+      "cover": "7-IMG_8687.jpg",
+      "reveal": "4-DSC00088.jpg"
+    },
+    {
+      "folder": "05-arquitectura",
+      "title": "Brands",
+      "category": "Comercial",
+      "year": "2024",
+      "cover": "5-DSC00437.jpg",
+      "reveal": "3-DSC00507.jpg"
+    },
+    {
+      "folder": "06-documental",
+      "title": "Documental",
+      "category": "Personal",
+      "year": "2024",
+      "cover": "3-DSC00002.jpg",
+      "reveal": "2-DSC00074.jpg"
+    },
+    {
+      "folder": "07-sesion-7",
+      "title": "Sesion 7",
+      "category": "Por definir",
+      "year": "2024",
+      "cover": "01-ejemplo.jpg",
+      "reveal": "02-ejemplo.jpg"
+    },
+    {
+      "folder": "08-sesion-8",
+      "title": "Sesion 8",
+      "category": "Por definir",
+      "year": "2024",
+      "cover": "01-ejemplo.jpg",
+      "reveal": "02-ejemplo.jpg"
+    },
+    {
+      "folder": "09-sesion-9",
+      "title": "Sesion 9",
+      "category": "Por definir",
+      "year": "2024",
+      "cover": "01-ejemplo.jpg",
+      "reveal": "02-ejemplo.jpg"
+    }
+  ]
+}
